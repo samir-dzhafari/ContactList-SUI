@@ -18,7 +18,7 @@ struct ContactsView: View {
     }
     
     var body: some View {
-        List(viewModel.payload.persons, id: \.self) { person in
+        List(viewModel.persons, id: \.self) { person in
             ContactsRowView(person: person) {
                 coordinator.push(.contactDetails(
                     payload: ContactDetailsPayload(person: person)

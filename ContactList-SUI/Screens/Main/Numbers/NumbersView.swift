@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct NumbersView: View {
+    
+    @StateObject private var viewModel: NumbersViewModel
+    
+    init(payload: NumbersPayload) {
+        self._viewModel = StateObject(wrappedValue: NumbersViewModel(payload: payload))
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(viewModel.persons, id: \.self) { person in
+            NumbersDataItemView(person: person)
+        }
+        .listStyle(.grouped)
     }
 }
 
 #Preview {
-    NumbersView()
+    NumbersView(payload: NumbersPayload(persons: [
+        Person(phone: "1", email: "2", name: "Tim", lastName: "Cook")
+    ]))
 }

@@ -43,7 +43,7 @@ class Coordinator: ObservableObject {
     func build(page: Page) -> some View {
         switch page {
         case .navigationTab:
-            NavigationTabView()
+                NavigationTabView()
         case let .contactDetails(payload):
             ContactDetailsView(payload: payload)
         }

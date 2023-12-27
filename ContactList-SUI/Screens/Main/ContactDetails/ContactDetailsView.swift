@@ -16,7 +16,25 @@ struct ContactDetailsView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            HStack(alignment: .center) {
+                Image(systemName: "person.fill")
+                    .resizable()
+                    .frame(width: 150, height: 150)
+            }
+            .fullWidth()
+            HStack(alignment: .center) {
+                Image(systemName: "phone")
+                    .foregroundStyle(.blue)
+                Text(viewModel.phone)
+            }
+            HStack(alignment: .center) {
+                Image(systemName: "envelope")
+                    .foregroundStyle(.blue)
+                Text(viewModel.email)
+            }
+        }
+        .navigationTitle(viewModel.navigationTitle)
     }
 }
 

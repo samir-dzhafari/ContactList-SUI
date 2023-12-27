@@ -9,22 +9,33 @@ import SwiftUI
 
 struct NavigationTabView: View {
     
-    @EnvironmentObject private var coordinator: Coordinator
-    
     @StateObject private var viewModel = NavigationTabViewModel()
+    
+    @State private var tabTitle = "Contacts"
     
     var body: some View {
         TabView {
-            ContactsView(payload: ContactsPayload(persons: viewModel.persons))
-                .tabItem {
-                    Label("Contacts", systemImage: "person.2.fill")
-                }
-            NumbersView()
-                .tabItem {
-                    Label("Numbers", systemImage: "phone.fill")
-                }
+            ContactsView(
+                payload: ContactsPayload(persons: viewModel.persons)
+            )
+            .tabItem {
+                Label("Contacts", systemImage: "person.2.fill")
+            }
+            .onAppear {
+                tabTitle = "Contacts"
+            }
+            
+            NumbersView(
+                payload: NumbersPayload(persons: viewModel.persons)
+            )
+            .tabItem {
+                Label("Numbers", systemImage: "phone.fill")
+            }
+            .onAppear {
+                tabTitle = "Numbers"
+            }
         }
-        .environmentObject(coordinator)
+        .navigationTitle(tabTitle)
     }
 }
 

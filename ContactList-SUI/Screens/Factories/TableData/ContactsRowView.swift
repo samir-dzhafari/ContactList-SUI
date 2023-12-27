@@ -18,7 +18,10 @@ struct ContactsRowView: View {
         } label: {
             HStack {
                 Text(person.fullName)
+                Spacer()
+                Image(systemName: "chevron.forward")
             }
+            .foregroundStyle(.black)
         }
     }
 }

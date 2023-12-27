@@ -9,9 +9,13 @@ import Foundation
 
 final class ContactsViewModel: ObservableObject {
     
-    let payload: ContactsPayload
+    private let payload: ContactsPayload
     
     init(payload: ContactsPayload) {
         self.payload = payload
+    }
+    
+    var persons: [Person] {
+        payload.persons
     }
 }
